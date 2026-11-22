@@ -79,7 +79,7 @@ const FALLBACK: NavCatalog = {
     { repo: 'noah-project', name: '專案管理', url: '', online: false },
   ],
   groups: [
-    { label: '公告', app: 'noah-notice', sections: [{ title: '公告', links: [{ label: '公告列表', app: 'noah-notice', path: '' }, { label: '發布公告', app: 'noah-notice', path: '' }] }] },
+    { label: '公告', app: 'noah-notice', sections: [{ title: '公告', links: [{ label: '營運公告', app: 'noah-notice', path: 'operations' }, { label: '活動', app: 'noah-notice', path: 'events' }, { label: '人事', app: 'noah-notice', path: 'people' }, { label: '制度', app: 'noah-notice', path: 'policy' }, { label: '公告管理', app: 'noah-notice', path: 'manage' }, { label: '公告發布', app: 'noah-notice', path: 'publish' }] }] },
     { label: '通知', app: 'noah-notify', sections: [{ title: '通知', links: [{ label: '我的通知', app: 'noah-notify', path: '' }, { label: '發送通知', app: 'noah-notify', path: '' }] }] },
     { label: '文件', app: 'noah-docs', sections: [{ title: '文件', links: [{ label: '文件庫', app: 'noah-docs', path: '' }, { label: '分類', app: 'noah-docs', path: '' }] }] },
     { label: '行事曆', app: 'noah-calendar', sections: [{ title: '行事曆', links: [{ label: '公司行事曆', app: 'noah-calendar', path: '' }, { label: '活動', app: 'noah-calendar', path: '' }] }] },

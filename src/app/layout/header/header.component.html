@@ -1,9 +1,5 @@
-<header class="site-header">
-  <a class="site-header__home" [href]="portalHomeUrl" aria-label="回入口">
-    <img class="site-header__logo" src="assets/images/logo.png" width="360" height="120" alt="諾亞數智">
-  </a>
-  <span class="site-header__product">專案管理</span>
-  <div class="site-header__actions">
-    <a class="site-header__link" [href]="portalHomeUrl">回入口</a>
-  </div>
-</header>
+<noah-header
+  productName="專案管理"
+  homeLabel="回入口"
+  [homeHref]="portalHomeUrl">
+</noah-header>
