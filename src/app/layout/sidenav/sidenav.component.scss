@@ -1,0 +1,66 @@
+:host {
+  display: contents;
+}
+
+.sidenav {
+  width: 196px;
+  flex-shrink: 0;
+  padding: 20px 12px 32px;
+  border-right: 1px solid var(--color-border);
+  background: #fff;
+}
+
+.sidenav__group p {
+  margin: 0 0 4px;
+  padding: 0 12px;
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.sidenav a {
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin: 0;
+  padding: 0 12px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-primary);
+  font-size: 16px;
+  line-height: 40px;
+  text-align: left;
+  text-decoration: none;
+}
+
+.sidenav a:hover {
+  background: rgb(15 23 42 / 5%);
+}
+
+.sidenav a.is-active,
+.sidenav a.is-active:hover {
+  background: var(--color-surface-selected);
+  color: var(--color-primary);
+  font-weight: 600;
+  box-shadow: inset 2px 0 0 var(--color-primary);
+}
+
+@media (max-width: 720px) {
+  .sidenav {
+    display: flex;
+    width: auto;
+    gap: 16px;
+    overflow-x: auto;
+    padding: 12px 16px;
+    border-right: 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .sidenav__group {
+    flex: 0 0 auto;
+  }
+
+  .sidenav a {
+    width: auto;
+    white-space: nowrap;
+  }
+}

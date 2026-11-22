@@ -1,0 +1,10 @@
+<nav class="sidenav" aria-label="功能">
+  @for (section of sections; track section.title) {
+    <div class="sidenav__group">
+      <p>{{ section.title }}</p>
+      @for (link of section.links; track link.label) {
+        <a [routerLink]="link.path" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }" ariaCurrentWhenActive="page">{{ link.label }}</a>
+      }
+    </div>
+  }
+</nav>

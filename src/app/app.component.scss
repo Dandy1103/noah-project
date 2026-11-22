@@ -1,0 +1,25 @@
+.app {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-width: 0;
+  min-height: calc(100dvh - var(--header-height));
+}
+
+.shell {
+  display: flex;
+  align-items: stretch;
+  min-width: 0;
+  min-height: 0;
+}
+
+.workspace {
+  flex: 1;
+  min-width: 0;
+  padding: 28px 32px 48px;
+}
+
+@media (max-width: 720px) {
+  .shell {
+    flex-direction: column;
+  }
+}

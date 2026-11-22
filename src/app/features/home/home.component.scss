@@ -1,0 +1,52 @@
+:host { display: block; }
+
+.roster-head { margin-bottom: 16px; }
+
+.roster-head__title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-left: 12px;
+  border-left: 3px solid #001430;
+}
+
+.roster-head__title h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.crumb { margin-top: 4px; }
+
+.crumb ol {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 16px;
+}
+
+.crumb li + li::before {
+  content: "/";
+  margin: 0 8px;
+  color: var(--color-text-secondary);
+}
+
+.crumb a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+}
+
+.crumb a:hover { text-decoration: underline; }
+
+.crumb [aria-current="page"] {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.note {
+  margin: 0;
+  color: #64748b;
+}
