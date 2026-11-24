@@ -1,12 +1,2 @@
-<div class="roster-head">
-  <div class="roster-head__title">
-    <h1>專案管理</h1>
-  </div>
-  <nav class="crumb" aria-label="麵包屑">
-    <ol>
-      <li><a [href]="portalHome">首頁</a></li>
-      <li aria-current="page">專案管理</li>
-    </ol>
-  </nav>
-</div>
+<noah-page-heading title="專案管理" [breadcrumbs]="[{ label: '首頁', href: portalHome }, { label: '專案管理' }]" />
 <p class="note">這個專案剛開好，功能接著做。</p>
