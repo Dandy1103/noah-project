@@ -61,14 +61,14 @@ const LOCAL_ORIGINS: Record<string, string> = {
 
 const FALLBACK: NavCatalog = {
   systems: [
-    { repo: 'noah-portal', name: '入口', url: 'https://noahportal.dandy-cheng.com/', online: true },
+    { repo: 'noah-portal', name: '入口', url: 'https://noah-platform.dandy-cheng.com/portal/', online: true },
     { repo: 'noah-hrm', name: '人資管理', url: 'https://noahhrm.dandy-cheng.com/', online: true },
     { repo: 'noah-notice', name: '公告', url: '', online: false },
     { repo: 'noah-notify', name: '通知', url: '', online: false },
     { repo: 'noah-docs', name: '文件', url: '', online: false },
     { repo: 'noah-calendar', name: '行事曆', url: '', online: false },
     { repo: 'noah-account', name: '帳號管理', url: '', online: false },
-    { repo: 'noah-apps', name: '應用管理', url: 'https://noahapps.dandy-cheng.com/', online: true },
+    { repo: 'noah-apps', name: '應用管理', url: 'https://noah-platform.dandy-cheng.com/apps/', online: true },
     { repo: 'noah-crm', name: '客戶關係', url: '', online: false },
     { repo: 'noah-erp', name: '財務會計', url: '', online: false },
     { repo: 'noah-itsm', name: '資訊服務', url: '', online: false },
@@ -100,8 +100,8 @@ const FALLBACK: NavCatalog = {
 export function catalogUrl(): string {
   const local = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
   if (local) return 'http://localhost:3002/api/apps/catalog';
-  if (location.hostname === 'noahapps.dandy-cheng.com') return '/api/apps/catalog';
-  return 'https://noahapps.dandy-cheng.com/api/apps/catalog';
+  if (location.hostname === 'noah-platform.dandy-cheng.com') return new URL('/api/apps/catalog', location.origin).href;
+  return 'https://noah-platform.dandy-cheng.com/api/apps/catalog';
 }
 
 export function fallbackGroups(self: string): NavGroup[] {
@@ -206,4 +206,19 @@ function isNavCatalog(value: unknown): value is NavCatalog {
   if (!value || typeof value !== 'object') return false;
   const record = value as { systems?: unknown; groups?: unknown };
   return Array.isArray(record.systems) && Array.isArray(record.groups);
+}
+
+export function portalEntry(
+  catalog: { systems?: readonly { repo?: string; url?: string; localUrl?: string; online?: boolean }[] } | null,
+  path = '',
+): string {
+  const systems = catalog ? catalog.systems ?? [] : FALLBACK.systems;
+  const system = systems.find((item) => item?.repo === 'noah-portal');
+  const local = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
+  if (local) {
+    const localHref = localTarget('noah-portal', path, system as CatalogSystem | undefined);
+    if (localHref) return localHref;
+  }
+  if (!system || system.online !== true || !system.url) return '';
+  return joinUrl(path, system.url) ?? '';
 }
