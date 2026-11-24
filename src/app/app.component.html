@@ -1,14 +1,5 @@
 @if (shellReady()) {
-  <app-header />
-  <div class="app">
-    <app-navbar />
-    <div class="shell">
-      <app-sidenav />
-      <main class="workspace">
-        <router-outlet />
-      </main>
-    </div>
-  </div>
+  <router-outlet />
 } @else {
   <noah-loading-mask />
 }
