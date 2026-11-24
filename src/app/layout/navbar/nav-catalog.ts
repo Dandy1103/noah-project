@@ -98,8 +98,6 @@ const FALLBACK: NavCatalog = {
 };
 
 export function catalogUrl(): string {
-  const local = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
-  if (local) return 'http://localhost:3002/api/apps/catalog';
   if (location.hostname === 'noah-platform.dandy-cheng.com') return new URL('/api/apps/catalog', location.origin).href;
   return 'https://noah-platform.dandy-cheng.com/api/apps/catalog';
 }
