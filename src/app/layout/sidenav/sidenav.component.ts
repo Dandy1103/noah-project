@@ -1,6 +1,6 @@
 import { Component, DestroyRef, inject } from '@angular/core';
 import { NoahSidebarComponent, NoahSidebarSection } from '@dandy1103/ui';
-import { loadCatalog, sideSections } from '../navbar/nav-catalog';
+import { loadCatalog, loadedCatalog, NavCatalog, sideSections } from '../navbar/nav-catalog';
 
 const SELF_REPO = 'noah-project';
 
@@ -15,14 +15,23 @@ export class SidenavComponent {
   sections: NoahSidebarSection[] = [];
 
   constructor() {
-    const controller = new AbortController();
-    inject(DestroyRef).onDestroy(() => controller.abort());
-    void loadCatalog(controller.signal).then((catalog) => {
-      if (!catalog) return;
+    const apply = (catalog: NavCatalog | null) => {
+      if (!catalog) {
+        this.sections = [];
+        return;
+      }
       this.sections = sideSections(catalog, SELF_REPO).map((section) => ({
         ...section,
         links: section.links.map((link) => ({ ...link, exact: true })),
       }));
-    });
+    };
+    const current = loadedCatalog();
+    if (current !== undefined) {
+      apply(current);
+      return;
+    }
+    const controller = new AbortController();
+    inject(DestroyRef).onDestroy(() => controller.abort());
+    void loadCatalog(controller.signal).then(apply);
   }
 }

@@ -1,6 +1,6 @@
 import { Component, computed, DestroyRef, inject, signal } from '@angular/core';
 import { NoahNavbarComponent } from '@dandy1103/ui';
-import { applyNav, loadCatalog, NavCatalog } from './nav-catalog';
+import { applyNav, loadCatalog, loadedCatalog, NavCatalog } from './nav-catalog';
 
 const repo = 'noah-project';
 
@@ -11,7 +11,7 @@ const repo = 'noah-project';
   template: `@if (groups(); as groups) { <noah-navbar [groups]="groups" [currentLabel]="currentLabel()" /> }`,
 })
 export class NavbarComponent {
-  private readonly catalog = signal<NavCatalog | null>(null);
+  private readonly catalog = signal<NavCatalog | null>(loadedCatalog() ?? null);
 
   constructor() {
     const request = new AbortController();

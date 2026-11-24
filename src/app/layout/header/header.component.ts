@@ -1,6 +1,6 @@
 import { Component, DestroyRef, inject, signal } from '@angular/core';
 import { NoahHeaderAction, NoahHeaderComponent } from '@dandy1103/ui';
-import { loadCatalog, NavCatalog, portalEntry } from '../navbar/nav-catalog';
+import { loadCatalog, loadedCatalog, NavCatalog, portalEntry } from '../navbar/nav-catalog';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +9,7 @@ import { loadCatalog, NavCatalog, portalEntry } from '../navbar/nav-catalog';
   templateUrl: './header.component.html',
 })
 export class HeaderComponent {
-  private readonly catalog = signal<NavCatalog | null>(null);
+  private readonly catalog = signal<NavCatalog | null>(loadedCatalog() ?? null);
   readonly userName = signal('');
 
   constructor() {
