@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NoahNavbarComponent } from '@dandy1103/navbar';
+import { NoahNavbarComponent } from '@dandy1103/ui';
 
 @Component({
   selector: 'app-navbar',

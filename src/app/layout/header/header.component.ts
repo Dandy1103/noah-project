@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NoahHeaderComponent } from '@dandy1103/header';
+import { NoahHeaderComponent } from '@dandy1103/ui';
 
 @Component({
   selector: 'app-header',
