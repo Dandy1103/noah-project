@@ -12,7 +12,6 @@ import { signedIn } from './require-session';
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, NavbarComponent, SidenavComponent, NoahLoadingMaskComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   readonly shellReady = signal(false);
