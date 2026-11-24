@@ -24,13 +24,13 @@ export class HeaderComponent {
   }
 
   get actions(): NoahHeaderAction[] {
-    const home = this.homeHref;
-    const origin = home ? new URL(home, location.origin).origin + '/' : '';
+    const next = location.pathname + location.search;
+    const query = new URLSearchParams({ next }).toString();
     return [
       { label: '個人資料', href: portalEntry(this.catalog(), 'profile') },
       { label: '我的權限', href: portalEntry(this.catalog(), 'permissions') },
-      { label: '變更密碼', href: origin ? new URL('auth/change-password', origin).href : '' },
-      { label: '登出', href: origin ? new URL('auth/logout', origin).href : '', method: 'post' },
+      { label: '變更密碼', href: `/auth/change-password?${query}` },
+      { label: '登出', href: `/auth/logout?${query}`, method: 'post' },
     ];
   }
 }
