@@ -37,7 +37,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build app
-        run: npm run build -- --base-href=/${{ steps.meta.outputs.route }}/
+        run: npm run build -- --base-href=/remotes/${{ steps.meta.outputs.route }}/
 
       - name: Package immutable artifact
         shell: bash
